@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form action="/" method="POST">
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="title" value="<%=t.name%>">
+                </div>
+                <div class="mb-3 col-2 offset-5"><button class="btn btn-success">Click</button></div>
+            </form>
+            <div class="row">
+                <div class="col-2 offset-1"><img src="http://openweathermap.org/img/wn/<%=t.weather[0].icon%>@2x.png">
+                </div>
+                <div class="col-4" class="text-centre">
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <%=t.name%>,<%=t.sys.country%> <img
+                                            src="http://openweathermap.org/images/flags/<%=t.sys.country.toLowerCase()%>.png">
+                            </li>
+                            <li class="list-group-item">
+                                <%= t.main.temp %>°С
+                            </li>
+                            <li class="list-group-item">
+                                <p>Geo coords <a href="/weathermap?zoom=12&<%=t.coord.lat%>&<%=t.coord.lon%>">[
+                                        <%=t.coord.lat%>, <%=t.coord.lon%>]
+                                    </a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
